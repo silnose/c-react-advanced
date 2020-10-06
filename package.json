@@ -1,0 +1,47 @@
+{
+  "name": "c-react-advanced",
+  "version": "1.0.0",
+  "description": "Utilizaremos como empaquetador y transpilador:",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server",
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "standard": {
+    "ignore": [
+      "/api/**"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/silnose/c-react-advanced.git"
+  },
+  "keywords": [],
+  "author": "silnose",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/silnose/c-react-advanced/issues"
+  },
+  "homepage": "https://github.com/silnose/c-react-advanced#readme",
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "html-webpack-plugin": "^4.5.0",
+    "standard": "^14.3.4",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.11.5",
+    "intersection-observer": "^0.11.0",
+    "nprogress": "^0.2.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-icons": "^3.11.0",
+    "styled-components": "^5.2.0"
+  }
+}
