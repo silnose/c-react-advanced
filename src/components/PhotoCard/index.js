@@ -15,7 +15,6 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
   const [show, element] = useNearScreen()
   const [toggleLike] = useLikePhoto()
   const handleFavButtonClick = () => {
-    console.log(`id de la photo ${id}`)
     setLiked(!liked)
     toggleLike({ variables: { input: { id: id } } })
   }
