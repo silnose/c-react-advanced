@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Category } from '../Category'
-import NProgress from 'nprogress';
+import NProgress from 'nprogress'
 import { List, Item } from './styles.js'
 
 const useCategoryData = () => {
@@ -12,7 +12,9 @@ const useCategoryData = () => {
     const getCategories = async () => {
       setLoading(true)
       try {
-        const response = await window.fetch('https://silnose-petgram-api.vercel.app/categories')
+        const response = await window.fetch(
+          'https://silnose-petgram-api.vercel.app/categories'
+        )
         const data = await response.json()
         setCategories(data)
         setLoading(false)
@@ -51,14 +53,13 @@ export const ListOfCategories = () => {
 
   const renderList = (fixed) => (
     <List fixed={fixed}>
-      {
-        categories.map((category) => (
-          <Item key={category.id}>
-            <Category {...category} />
-          </Item>
-        ))
-      }
-    </List>)
+      {categories.map((category) => (
+        <Item key={category.id}>
+          <Category {...category} path={`/pet/${category.id}`} />
+        </Item>
+      ))}
+    </List>
+  )
 
   return (
     <>

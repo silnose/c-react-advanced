@@ -1,7 +1,7 @@
 import React from 'react'
-import { PhotoCard } from '../components/PhotoCard/'
-import { useGetSinglePhoto } from '../hooks/useGetSinglePhoto.js'
-export const PhotoCardWithQuery = ({ id }) => {
+import { PhotoCard } from '../PhotoCard/'
+import { useGetSinglePhoto } from '../../hooks/useGetSinglePhoto.js'
+export const PhotoDetail = ({ id }) => {
   const { loading, error, data } = useGetSinglePhoto(id)
 
   if (loading) {
