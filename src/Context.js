@@ -1,5 +1,5 @@
 import React, { createContext, useState } from 'react'
-
+import { navigate } from '@reach/router'
 export const Context = createContext()
 
 const Provider = ({ children }) => {
@@ -11,6 +11,12 @@ const Provider = ({ children }) => {
     activateAuth: (token) => {
       setIsAuth(true)
       window.sessionStorage.setItem('token', token)
+      navigate('/')
+    },
+    removeAuth: () => {
+      setIsAuth(false)
+      window.sessionStorage.removeItem('token')
+      navigate('/login')
     }
   }
   return <Context.Provider value={value}>{children}</Context.Provider>

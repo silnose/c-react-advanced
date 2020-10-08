@@ -1,7 +1,8 @@
 import React from 'react'
 import { useInputValue } from '../../hooks/useInputValue'
 import singInImage from '../../images/corgi-dog.jpg'
-import { Form, Input, Button, Small, Title, Error } from './styles'
+import { Form, Input, Small, Title, Error } from './styles'
+import { SubmitButton } from '../SubmitButton/index'
 
 export const userFormActions = {
   REGISTER: 'Register',
@@ -22,7 +23,7 @@ export const UserForm = ({ onSubmit, action, error, disabled }) => {
 
   return (
     <>
-      <Form onSubmit={handleSubmit}>
+      <Form>
         <img src={singInImage} alt='Sing In' width='150' />
         <Title>{title}</Title>
         <Input
@@ -41,9 +42,9 @@ export const UserForm = ({ onSubmit, action, error, disabled }) => {
           required
           {...password}
         />
-        <Button type='submit' disabled={disabled}>
+        <SubmitButton disabled={disabled} onClick={handleSubmit}>
           {action}
-        </Button>
+        </SubmitButton>
         {error && <Error>{error}</Error>}
         <Small display={action}>
           You don't have an account? <a href='#'>Register Here!</a>

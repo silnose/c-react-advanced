@@ -31,6 +31,15 @@ module.exports = {
         use: {
           loader: 'babel-loader'
         }
+      },
+      {
+        test: /\.(jpg|png|gif|woff|eot|ttf|svg|mp4|webm)$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 90000
+          }
+        }
       }
     ]
   }

@@ -30,8 +30,10 @@
     "@babel/preset-react": "^7.10.4",
     "apollo": "^2.31.0",
     "babel-loader": "^8.1.0",
+    "file-loader": "^6.1.0",
     "html-webpack-plugin": "^4.5.0",
     "standard": "^14.3.4",
+    "url-loader": "^4.1.0",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
