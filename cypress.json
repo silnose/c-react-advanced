@@ -1,0 +1,6 @@
+{
+  "baseUrl": "https://silnose-petgram-frontend.silnose.vercel.app/",
+  "chromeWebSecurity": false,
+  "viewportWith": 500,
+  "viewportHeight": 800
+}
