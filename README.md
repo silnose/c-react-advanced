@@ -65,3 +65,58 @@ En general usamos render props cuando queremos dar la mayor libertad posible al 
 <https://reach.tech/router/>
 
 Reach Router es una versión simplificada y mejor optimizada de React Router, su creador es Ryan Florence el mismo creador de React Router. Se anunció que los dos paquetes se iban a unir, pero su API se va a parecer más a Reach Router.
+
+# React Helmet
+
+# React Memo
+
+La React memo se usa principalmente para aumentar la velocidad de renderizado mientras disminuye las operaciones de renderizado, almacenar en caché el render()resultado de un componente en un ciclo de renderizado inicial y reutilizarlo dadas las mismas entradas (props, estado, propiedades de clase, variables de función) .
+
+Para evitar que estas render() operations se repitan y generen un resultado idéntico, podemos almacenar en caché el resultado de la inicial render()y hacer referencia a ese resultado en la memoria la próxima vez que se procese un componente.
+
+Para componentes de clase tenemos _React.PureComponent_ una optimización del rendimiento, que implementa el componentShouldUdpdate() método del ciclo de vida para comparar accesorios poco profundos y comparación de estado del render anterior. Si coinciden, el componente no se volverá a renderizar.
+
+```
+export class MyComponent extends React.PureComponent {
+   ...
+}
+```
+
+Para replicar este comportamiento en componentes funcionales, React introdujo la React.memoAPI, un componente de orden superior que implementa la misma comparación superficial en los props para determinar si se procesará una nueva renderización.
+
+React.memo también nos da la opción de proporcionar nuestra propia función de comparación como un segundo argumento para la API, lo que nos brinda más granularidad para determinar si se necesita una actualización.
+
+```
+export const Home = React.memo(HomePage, (prevProps, props) => {
+  console.log('Render: Home Memo')
+  return prevProps.id === props.id
+})
+
+```
+
+![](https://dmitripavlutin.com/static/c07d2ce4ede6301197b9605a75ae9b4e/8ea29/when-to-use-react-memo-infographic.webp)
+
+# React Lazy - Suspense
+
+<https://es.reactjs.org/docs/code-splitting.html>
+Suspense es un componente de React que nos va a permitir suspender algo cuando está en modo lazy(); y lazy(). El cual nos va a permitir importar un componente que no será cargado hasta que este sea llamado osea carga on-demand. De esta forma mejoraremos el tiempo de carga de nuestra aplicación enormemente.
+
+Para SSR debemos utilizar otra libreria <https://github.com/gregberge/loadable-components>
+
+# Props Types
+
+<https://reactjs.org/docs/typechecking-with-proptypes.html#gatsby-focus-wrapper>
+<https://github.com/facebook/prop-types>
+Las PropTypes serán un validador del tipo de datos que estamos recibiendo como props en nuestros componentes
+
+# PWA
+
+## Manifest (add to home)
+
+<https://github.com/arthurbergmz/webpack-pwa-manifest#readme>
+
+## Workbox (service worker)
+
+<https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin>
+<https://medium.com/twostoryrobot/a-recipe-for-offline-support-in-react-apollo-571ad7e6f7f4>
+Utilizamos workbox-webpack-plugin para agregar soporte online a nuestro proyecto, así como lo hacen Twitter e Instagram cuando entramos desde el navegador.
