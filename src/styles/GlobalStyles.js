@@ -32,9 +32,12 @@ html {
     max-width: 500px;
     overscroll-behavior: none;
     width: 100%;
-    border: 1px solid red;
   }
-
+  #spinner-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
   #app {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
     overflow-x: hidden;

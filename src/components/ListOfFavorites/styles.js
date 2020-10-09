@@ -9,6 +9,7 @@ export const Link = styled(LinkRouter)`
 export const Image = styled.img`
   width: 100%;
   object-fit: cover;
+  border-radius: 5px;
 `
 
 export const Container = styled.div`

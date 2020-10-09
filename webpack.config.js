@@ -45,8 +45,6 @@ module.exports = {
     }),
     new WorkboxPlugin.GenerateSW({
       swDest: 'service-worker.js',
-      clientsClaim: true,
-      skipWaiting: true,
       maximumFileSizeToCacheInBytes: 5000000,
       runtimeCaching: [
         {

@@ -19,6 +19,7 @@ export const useCategoryData = () => {
         setLoading(false)
         setError(error.message)
       }
+      // Abort both fetches on unmount
     }
     getCategories()
   }, [])

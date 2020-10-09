@@ -49,7 +49,7 @@ export const Small = styled.small`
   font-weight: 400;
   & a {
     text-decoration: none;
-    color: #0095f6;
+    color: #965726;
     font-weight: bold;
   }
   ${(props) =>

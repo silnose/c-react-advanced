@@ -17,10 +17,9 @@ const HomePage = ({ id }) => {
 }
 
 export const Home = React.memo(HomePage, (prevProps, props) => {
-  console.log('Render: Home Memo')
   return prevProps.id === props.id
 })
 
-HomePage.propTypes = {
+/*HomePage.propTypes = {
   id: PropTypes.string
-}
+}*/

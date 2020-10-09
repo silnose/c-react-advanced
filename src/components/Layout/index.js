@@ -8,11 +8,7 @@ export const Layout = ({ children, title = '', subtitle = '' }) => {
         <title>{`${title} | Petgram 🐕 `}</title>
         <meta name='description' content={subtitle} />
       </Helmet>
-      <Container>
-        <Title>{title}</Title>
-        <Subtitle>{subtitle}</Subtitle>
-        {children}
-      </Container>
+      <Container>{children}</Container>
     </>
   )
 }

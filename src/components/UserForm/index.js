@@ -47,7 +47,7 @@ export const UserForm = ({ onSubmit, action, error, disabled }) => {
         </SubmitButton>
         {error && <Error>{error}</Error>}
         <Small display={action}>
-          You don't have an account? <a href='#'>Register Here!</a>
+          You don't have an account? <a href='/register'>Register Here!</a>
         </Small>
       </Form>
     </>

@@ -7,7 +7,7 @@ export const Image = styled.img`
   height: 100%;
   object-fit: cover;
   position: absolute;
-  border-radius: 10px;
+  border-radius: 5px;
   top: 0;
   width: 100%;
 `
@@ -16,7 +16,7 @@ export const ImgWrapper = styled.div`
   padding: 56.25% 0 0 0;
   height: 0;
   display: block;
-  border-radius: 10px;
+
   position: relative;
 `
 
