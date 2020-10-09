@@ -2,33 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { Category } from '../Category'
 import NProgress from 'nprogress'
 import { List, Item } from './styles.js'
+import { useCategoryData } from '../../hooks/useCategoryData.js'
 
-const useCategoryData = () => {
-  const [categories, setCategories] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
-
-  useEffect(() => {
-    const getCategories = async () => {
-      setLoading(true)
-      try {
-        const response = await window.fetch(
-          'https://silnose-petgram-api.vercel.app/categories'
-        )
-        const data = await response.json()
-        setCategories(data)
-        setLoading(false)
-      } catch (error) {
-        setLoading(false)
-        setError(error.message)
-      }
-    }
-    getCategories()
-  }, [])
-
-  return { categories, loading, error }
-}
-export const ListOfCategories = () => {
+const ListOfCategoriesComponent = () => {
   const [showFixed, setShowFixed] = useState(false)
   const { categories, loading, error } = useCategoryData()
 
@@ -51,6 +27,9 @@ export const ListOfCategories = () => {
     }
   }, [loading])
 
+  if (error) {
+    return <h1>Error :( </h1>
+  }
   const renderList = (fixed) => (
     <List fixed={fixed}>
       {categories.map((category) => (
@@ -68,3 +47,5 @@ export const ListOfCategories = () => {
     </>
   )
 }
+
+export const ListOfCategories = React.memo(ListOfCategoriesComponent)

@@ -1,6 +1,8 @@
 import React from 'react'
+import { PropTypes } from 'prop-types'
 import { PhotoCard } from '../PhotoCard/'
 import { useGetSinglePhoto } from '../../hooks/useGetSinglePhoto.js'
+
 export const PhotoDetail = ({ id }) => {
   const { loading, error, data } = useGetSinglePhoto(id)
 
@@ -16,4 +18,8 @@ export const PhotoDetail = ({ id }) => {
       <PhotoCard {...data.photo} />
     </>
   )
+}
+
+PhotoDetail.propTypes = {
+  id: PropTypes.string.isRequired
 }

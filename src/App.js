@@ -12,7 +12,7 @@ export default function App() {
       <Logo />
       <GlobalStyles />
       <NavBar />
-      <Routes {...isAuth} />
+      <Routes isAuth={isAuth} />
     </>
   )
 }

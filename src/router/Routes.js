@@ -1,27 +1,29 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Redirect, Router } from '@reach/router'
 import { Home } from '../pages/Home'
-import { Detail } from '../pages/Detail'
-import { Favs } from '../pages/Favs'
-import { User } from '../pages/User'
-import { AnonymousUser } from '../pages/AnonymousUser'
 import { NotFound } from '../pages/NotFound'
+const Favs = React.lazy(() => import('../pages/Favs'))
+const User = React.lazy(() => import('../pages/User'))
+const AnonymousUser = React.lazy(() => import('../pages/AnonymousUser'))
+const Detail = React.lazy(() => import('../pages/Detail'))
 
 export const Routes = ({ isAuth }) => {
   return (
     <>
-      <Router>
-        <NotFound default />
-        <Home path='/' />
-        <Home path='/pet/:id' />
-        <Detail path='/detail/:detailId' />
-        {!isAuth && <AnonymousUser path='/login' />}
-        {!isAuth && <Redirect noThrow from='/favorites' to='/login' />}
-        {!isAuth && <Redirect noThrow from='/account' to='/login' />}
-        {isAuth && <Redirect noThrow from='/login' to='/' />}
-        <Favs path='/favorites' />
-        <User path='/account' />
-      </Router>
+      <Suspense fallback={<div>HOLA</div>}>
+        <Router>
+          <NotFound default />
+          <Home path='/' />
+          <Home path='/pet/:id' />
+          <Detail path='/detail/:detailId' />
+          {!isAuth && <AnonymousUser path='/login' />}
+          {!isAuth && <Redirect noThrow from='/favorites' to='/login' />}
+          {!isAuth && <Redirect noThrow from='/account' to='/login' />}
+          {isAuth && <Redirect noThrow from='/login' to='/' />}
+          <Favs path='/favorites' />
+          <User path='/account' />
+        </Router>
+      </Suspense>
     </>
   )
 }

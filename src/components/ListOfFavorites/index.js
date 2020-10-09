@@ -1,6 +1,7 @@
 import React from 'react'
 import { useGetFavoritesQuery } from '../../hooks/useGetFavoritesQuery'
 import { Link, Image, Container } from './styles'
+import { PropTypes } from 'prop-types'
 
 export const ListOfFavorites = () => {
   const { data, loading, error, refetch } = useGetFavoritesQuery()
@@ -23,5 +24,11 @@ export const ListOfFavorites = () => {
         ))}
       </Container>
     </>
+  )
+}
+
+ListOfFavorites.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({ id: PropTypes.string, src: PropTypes.string })
   )
 }

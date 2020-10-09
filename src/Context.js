@@ -11,7 +11,7 @@ const Provider = ({ children }) => {
     activateAuth: (token) => {
       setIsAuth(true)
       window.sessionStorage.setItem('token', token)
-      navigate('/')
+      navigate('/favorites')
     },
     removeAuth: () => {
       setIsAuth(false)

@@ -1,12 +1,16 @@
 import React, { useContext } from 'react'
 import { Context } from '../Context'
 import { SubmitButton } from '../components/SubmitButton'
+import { Layout } from '../components/Layout'
 
-export const User = () => {
+const User = () => {
   const { removeAuth } = useContext(Context)
   return (
     <>
-      <SubmitButton onClick={removeAuth}>Log Out</SubmitButton>
+      <Layout title='Account' subtitle='Your petgram account'>
+        <SubmitButton onClick={removeAuth}>Log Out</SubmitButton>
+      </Layout>
     </>
   )
 }
+export default User

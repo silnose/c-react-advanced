@@ -2,6 +2,7 @@ import React from 'react'
 import { PhotoCard } from '../PhotoCard'
 import { useGetPhotos } from '../../hooks/useGetPhotos.js'
 import { List, Item } from './style.js'
+import { PropTypes } from 'prop-types'
 
 export const ListOfPhotoCard = ({ categoryID }) => {
   const { loading, error, data } = useGetPhotos(categoryID)
@@ -24,4 +25,8 @@ export const ListOfPhotoCard = ({ categoryID }) => {
       </List>
     </>
   )
+}
+
+ListOfPhotoCard.propTypes = {
+  categoryID: PropTypes.string
 }
