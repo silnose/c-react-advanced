@@ -1,4 +1,11 @@
-# c-react-advanced
+# Petgram (react avanzado)
+
+Red social solo para mascotas.
+
+![](./readme-static/0.jpeg)
+![](./readme-static/1.jpeg)
+![](./readme-static/2.jpeg)
+![](./readme-static/3.jpeg)
 
 React es una biblioteca de JavaScript para construir interfaces de usuario. Es declarativo, basado en componentes y puedes escribir una vez y usarlo donde sea.
 
@@ -56,9 +63,60 @@ El Context que creemos nos va a proporcionar 2 componentes:
 
 <https://es.reactjs.org/docs/render-props.html#gatsby-focus-wrapper>
 
-Render props es un patrón utilizado en React que consiste en delegar lo que un componente va a "renderear" a otro componente, la mayoría de la veces, a un padre en el árbol de componentes.
+La técnica de render props está basada en la propiedad children de los componentes de react, envés de renderizar un componente hijo en el componente padre, renderizas una función que devuelve un componente, a la función le pasas como parámetros los objetos que desees (puede ser un fetching de base de datos como lo vimos en esta clase) y puedes acceder a la información como si ya la tuvieras a la hora de montar el componente padre con un hijo de una función.
+
+En otras palabras Render props es un patrón utilizado en React que consiste en delegar lo que un componente va a "renderear" a otro componente, la mayoría de la veces, a un padre en el árbol de componentes.
 
 En general usamos render props cuando queremos dar la mayor libertad posible al consumidor de nuestro componente de definir qué es lo que va a renderear, sin atarlo necesariamente a un template específico
+
+## Ejemplo
+
+1- Primero creamos un componente que haga toda la lógica del fetching de datos y regrese una función:
+
+```
+const GetPokemon = ({ children, pokemonNumber }) => {
+  const [pokemon, setPokemon] = useState([]);
+  useEffect(() => {
+    window.fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonNumber}/`)
+      .then((res) => res.json())
+      .then((myPokemon) => {
+        setPokemon({
+          src: myPokemon.sprites.front_default,
+          name: myPokemon.species.name,
+          id: myPokemon.id,
+        });
+      })
+      .catch((error) => { console.error(error); });
+  }, []);
+  return ( // acá toda hacer un return del children como función
+    <div>
+      {children(
+        { pokemon }, // en los argumentos dejamos la información que queramos que sea accesible para otros componentes
+      )}
+    </div>
+  );
+};
+```
+
+2- Después ya podemos acceder a la data del componente al invocarlo y pasar en el children una función con el mismo argumento que fue declarada:
+
+```
+<GetPokemon
+ pokemonNumber={key + 1}
+ key={key + 1}
+>
+ {
+   ({ pokemon = {} }) => (
+     <Pokemon
+       src={pokemon.src}
+       pokemonName={pokemon.name}
+       pokemonNumber={pokemon.id}
+       key={key + 1}
+     />
+   )
+ }
+</GetPokemon>
+```
 
 # Reach Router
 
@@ -120,3 +178,23 @@ Las PropTypes serán un validador del tipo de datos que estamos recibiendo como 
 <https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin>
 <https://medium.com/twostoryrobot/a-recipe-for-offline-support-in-react-apollo-571ad7e6f7f4>
 Utilizamos workbox-webpack-plugin para agregar soporte online a nuestro proyecto, así como lo hacen Twitter e Instagram cuando entramos desde el navegador.
+
+# Articulos Interesantes
+
+<https://medium.com/simply/comparison-hocs-vs-render-props-vs-hooks-55f9ffcd5dc6>
+
+## Licencia 📄
+
+MIT
+
+## Conceptos Aprendidos 🤓
+
+- <https://platzi.com/cursos/react-avanzado/>
+
+## Certificado
+
+- [Diploma](./readme-static/diploma-react-avanzado.pdf)
+
+---
+
+👩‍💻 with ❤️ by [silnose](https://github.com/silnose) 😊
